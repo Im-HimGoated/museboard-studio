@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A polished prototype for a shared creative workspace that captures ideas, references, sketches, and project tasks in one place."
+    />
+    <title>Museboard Studio | Creative Workspace Prototype</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Project navigation">
+        <div class="brand">
+          <div class="brand-mark">M</div>
+          <div>
+            <p>Museboard</p>
+            <span>Creative workspace</span>
+          </div>
+        </div>
+
+        <button class="new-project" type="button">
+          <span aria-hidden="true">+</span>
+          New project
+        </button>
+
+        <nav class="project-list" aria-label="Projects">
+          <button class="project active" type="button">
+            <span class="project-dot coral"></span>
+            Rebrand Sprint
+            <strong>12</strong>
+          </button>
+          <button class="project" type="button">
+            <span class="project-dot teal"></span>
+            Launch Concepts
+            <strong>8</strong>
+          </button>
+          <button class="project" type="button">
+            <span class="project-dot yellow"></span>
+            Client Workshop
+            <strong>5</strong>
+          </button>
+          <button class="project" type="button">
+            <span class="project-dot blue"></span>
+            Motion Explorations
+            <strong>9</strong>
+          </button>
+        </nav>
+
+        <section class="sidebar-panel" aria-labelledby="intake-title">
+          <h2 id="intake-title">Capture Queue</h2>
+          <div class="queue-item">
+            <span>Email</span>
+            <p>Client sent revised audience notes</p>
+          </div>
+          <div class="queue-item">
+            <span>Screenshot</span>
+            <p>Packaging reference from research call</p>
+          </div>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Rebrand Sprint</p>
+            <h1>Idea cockpit for the studio team</h1>
+          </div>
+          <div class="topbar-actions">
+            <button class="icon-button" type="button" title="Search" aria-label="Search">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="7"></circle>
+                <path d="m16.5 16.5 4 4"></path>
+              </svg>
+            </button>
+            <button class="icon-button" type="button" title="Filter" aria-label="Filter">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6h16"></path>
+                <path d="M7 12h10"></path>
+                <path d="M10 18h4"></path>
+              </svg>
+            </button>
+            <button class="share-button" type="button">Share board</button>
+          </div>
+        </header>
+
+        <section class="quick-capture" aria-label="Capture a new idea">
+          <div class="capture-tabs" role="tablist" aria-label="Capture type">
+            <button class="tab active" type="button" data-type="text">Text</button>
+            <button class="tab" type="button" data-type="image">Image</button>
+            <button class="tab" type="button" data-type="link">Link</button>
+            <button class="tab" type="button" data-type="sketch">Sketch</button>
+          </div>
+          <form id="capture-form" class="capture-form">
+            <textarea
+              id="idea-input"
+              rows="3"
+              placeholder="Drop a thought, call note, visual direction, client quote, or rough next step..."
+            ></textarea>
+            <div class="capture-meta">
+              <label>
+                <span>Group</span>
+                <select id="group-input">
+                  <option>Positioning</option>
+                  <option>Visual references</option>
+                  <option>Client feedback</option>
+                  <option>Tasks</option>
+                </select>
+              </label>
+              <label>
+                <span>Priority</span>
+                <select id="priority-input">
+                  <option>Normal</option>
+                  <option>High</option>
+                  <option>Low</option>
+                </select>
+              </label>
+              <button class="capture-button" type="submit">Capture idea</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="board-layout">
+          <div class="board-column">
+            <div class="column-header">
+              <h2>Positioning</h2>
+              <span>3 ideas</span>
+            </div>
+            <article class="idea-card text-card" draggable="true">
+              <div class="card-kicker">
+                <span>Call note</span>
+                <button type="button" aria-label="Connect idea">↔</button>
+              </div>
+              <h3>Make the brand feel quietly premium, not luxury.</h3>
+              <p>
+                Client liked the confidence of editorial layouts, but wants a warmer tone
+                for founder-led storytelling.
+              </p>
+              <footer>
+                <span class="tag">Strategy</span>
+                <span>Due Fri</span>
+              </footer>
+            </article>
+            <article class="idea-card task-card" draggable="true">
+              <div class="card-kicker">
+                <span>Next step</span>
+                <button type="button" aria-label="Connect idea">↔</button>
+              </div>
+              <h3>Write three tagline territories</h3>
+              <div class="progress-wrap">
+                <span style="width: 68%"></span>
+              </div>
+              <footer>
+                <span class="tag">Copy</span>
+                <span>68%</span>
+              </footer>
+            </article>
+          </div>
+
+          <div class="board-column">
+            <div class="column-header">
+              <h2>Visual References</h2>
+              <span>4 ideas</span>
+            </div>
+            <article class="idea-card image-card" draggable="true">
+              <div class="image-preview gradient-a"></div>
+              <div class="card-kicker">
+                <span>Screenshot</span>
+                <button type="button" aria-label="Connect idea">↔</button>
+              </div>
+              <h3>Layered product stills with tactile shadows</h3>
+              <p>Could guide the homepage art direction and social launch assets.</p>
+              <footer>
+                <span class="tag">Art direction</span>
+                <span>2 links</span>
+              </footer>
+            </article>
+            <article class="idea-card sketch-card" draggable="true">
+              <canvas id="sketch-pad" width="420" height="180" aria-label="Sketch pad"></canvas>
+              <div class="sketch-actions">
+                <button id="clear-sketch" type="button">Clear sketch</button>
+              </div>
+            </article>
+          </div>
+
+          <div class="board-column">
+            <div class="column-header">
+              <h2>Client Feedback</h2>
+              <span>3 ideas</span>
+            </div>
+            <article class="idea-card link-card" draggable="true">
+              <div class="card-kicker">
+                <span>Google Doc</span>
+                <button type="button" aria-label="Connect idea">↔</button>
+              </div>
+              <h3>Round 2 comments mention “more optimistic energy”</h3>
+              <p>Connect this to palette exploration and motion references.</p>
+              <footer>
+                <span class="tag">Feedback</span>
+                <span>Reviewing</span>
+              </footer>
+            </article>
+            <article class="idea-card text-card" draggable="true">
+              <div class="card-kicker">
+                <span>Post-it</span>
+                <button type="button" aria-label="Connect idea">↔</button>
+              </div>
+              <h3>Founder story needs one crisp proof point.</h3>
+              <p>Pull a metric from the Q1 research sheet before concept review.</p>
+              <footer>
+                <span class="tag">Research</span>
+                <span>Blocked</span>
+              </footer>
+            </article>
+          </div>
+
+          <div class="task-panel">
+            <div class="column-header">
+              <h2>Next Steps</h2>
+              <span>6 tasks</span>
+            </div>
+            <label class="task-item">
+              <input type="checkbox" checked />
+              <span>Import call notes</span>
+            </label>
+            <label class="task-item">
+              <input type="checkbox" />
+              <span>Cluster visual routes</span>
+            </label>
+            <label class="task-item">
+              <input type="checkbox" />
+              <span>Assign owners for copy explorations</span>
+            </label>
+            <label class="task-item">
+              <input type="checkbox" />
+              <span>Prepare Friday review board</span>
+            </label>
+            <div class="status-stack">
+              <div>
+                <strong>42</strong>
+                <span>captured ideas</span>
+              </div>
+              <div>
+                <strong>11</strong>
+                <span>connected threads</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
