@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A polished prototype for a shared creative workspace that captures ideas, references, sketches, and project tasks in one place."
+    />
+    <title>Northline Studio | Idea Board</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Project navigation">
+        <div class="brand">
+          <div class="brand-mark">N</div>
+          <div>
+            <p>Northline Studio</p>
+            <span>Idea board</span>
+          </div>
+        </div>
+
+        <button class="new-project" id="new-project" type="button">
+          <span aria-hidden="true">+</span>
+          New project
+        </button>
+
+        <nav class="project-list" aria-label="Projects">
+          <button class="project active" type="button" data-project="rebrand-sprint">
+            <span class="project-dot coral"></span>
+            Rebrand Sprint
+            <strong>0</strong>
+          </button>
+          <button class="project" type="button" data-project="launch-concepts">
+            <span class="project-dot teal"></span>
+            Launch Concepts
+            <strong>0</strong>
+          </button>
+          <button class="project" type="button" data-project="client-workshop">
+            <span class="project-dot yellow"></span>
+            Client Workshop
+            <strong>0</strong>
+          </button>
+          <button class="project" type="button" data-project="motion-explorations">
+            <span class="project-dot blue"></span>
+            Motion Explorations
+            <strong>0</strong>
+          </button>
+        </nav>
+
+        <section class="sidebar-panel" aria-labelledby="intake-title">
+          <h2 id="intake-title">Studio Sources</h2>
+          <div class="queue-item">
+            <span>Email</span>
+            <p>Client comments, approvals, and direction changes.</p>
+          </div>
+          <div class="queue-item">
+            <span>Calls and Docs</span>
+            <p>Post-it notes, Google files, and meeting follow-ups.</p>
+          </div>
+          <div class="queue-item">
+            <span>Visual references</span>
+            <p>Screenshots, images, and sketches for art direction.</p>
+          </div>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow" id="project-eyebrow">Rebrand Sprint</p>
+            <h1>Studio idea board</h1>
+          </div>
+          <div class="topbar-actions">
+            <button class="icon-button" id="search-toggle" type="button" title="Search" aria-label="Search" aria-expanded="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="7"></circle>
+                <path d="m16.5 16.5 4 4"></path>
+              </svg>
+            </button>
+            <button class="icon-button" id="filter-toggle" type="button" title="Filter" aria-label="Filter" aria-expanded="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6h16"></path>
+                <path d="M7 12h10"></path>
+                <path d="M10 18h4"></path>
+              </svg>
+            </button>
+            <button class="share-button" id="share-board" type="button">Share board</button>
+          </div>
+        </header>
+
+        <section class="toolbar-panel" id="toolbar-panel" hidden>
+          <label class="search-field" id="search-field" for="search-input" hidden>
+            <span>Search board</span>
+            <input id="search-input" type="search" aria-label="Search board" placeholder="Search captured ideas, sources, or tasks" />
+          </label>
+          <label class="filter-field" id="filter-field" for="filter-input" hidden>
+            <span>Show</span>
+            <select id="filter-input" aria-label="Show">
+              <option value="all">All captured items</option>
+              <option value="text">Text and call notes</option>
+              <option value="link">Links and Google files</option>
+              <option value="image">Images</option>
+              <option value="sketch">Sketches</option>
+              <option value="task">Tasks</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="quick-capture" aria-label="Capture a new idea">
+          <div class="capture-tabs" role="tablist" aria-label="Capture type">
+            <button class="tab active" type="button" data-type="text">Text</button>
+            <button class="tab" type="button" data-type="image">Image</button>
+            <button class="tab" type="button" data-type="link">Link</button>
+            <button class="tab" type="button" data-type="sketch">Sketch</button>
+          </div>
+          <form id="capture-form" class="capture-form">
+            <textarea
+              id="idea-input"
+              rows="3"
+              placeholder="Drop a thought, call note, visual direction, client quote, or rough next step..."
+            ></textarea>
+            <div class="capture-meta">
+              <label>
+                <span>Group</span>
+                <select id="group-input">
+                  <option>Positioning</option>
+                  <option>Visual references</option>
+                  <option>Client feedback</option>
+                  <option>Tasks</option>
+                </select>
+              </label>
+              <label>
+                <span>Source</span>
+                <select id="source-input">
+                  <option>Client call</option>
+                  <option>Email</option>
+                  <option>Post-it note</option>
+                  <option>Screenshot</option>
+                  <option>Google Doc</option>
+                  <option>Google Slide</option>
+                  <option>Google Sheet</option>
+                </select>
+              </label>
+              <label>
+                <span>Priority</span>
+                <select id="priority-input">
+                  <option>Normal</option>
+                  <option>High</option>
+                  <option>Low</option>
+                </select>
+              </label>
+              <button class="capture-button" type="submit">Capture idea</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="board-layout">
+          <div class="board-column" data-group="Positioning">
+            <div class="column-header">
+              <h2>Positioning</h2>
+              <span>0 ideas</span>
+            </div>
+          </div>
+
+          <div class="board-column" data-group="Visual references">
+            <div class="column-header">
+              <h2>Visual References</h2>
+              <span>0 ideas</span>
+            </div>
+          </div>
+
+          <div class="board-column" data-group="Client feedback">
+            <div class="column-header">
+              <h2>Client Feedback</h2>
+              <span>0 ideas</span>
+            </div>
+          </div>
+
+          <div class="task-panel">
+            <div class="column-header">
+              <h2>Next Steps</h2>
+              <span>0 tasks</span>
+            </div>
+            <div class="empty-state task-empty">Tasks captured from notes will appear here.</div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
